@@ -41,6 +41,11 @@ class Game {
   
       this.clouds.forEach((cloud) => {
         cloud.drawCloud();
+        if (this.player.collision(cloud)) {
+          return false;
+        } else {
+          return true;
+        }
       });
 
       if (frameCount % 130 === 0) {
@@ -59,10 +64,6 @@ class Game {
         obstacle.drawObstacle();
       });
 
-        if (this.player.collision(this.cloud)) {
-          return false;
-        } else {
-          return true;
-        }
+        
     }
   }
