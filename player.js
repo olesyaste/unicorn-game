@@ -3,14 +3,14 @@ class Player {
     this.height = 150;
     this.width = 150;
     this.x = 300;
-    this.y = 450;
+    this.y = 400;
     this.image;
     this.gravity = 0.8;
     this.velocity = 0.9;
   }
 
   collision(cloudInfo) {
-    console.log(cloudInfo);
+    //console.log(cloudInfo);
     let playerX = this.x + this.width / 2;
     let playerY = this.y + this.height / 2;
     let cloudX = cloudInfo.x + cloudInfo.width / 2;
