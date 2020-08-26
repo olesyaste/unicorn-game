@@ -47,8 +47,6 @@ class Player {
 
   }
   jump() {
-    //console.log("this will be the jump");
     this.velocity = -15;
-    // }
   }
 }

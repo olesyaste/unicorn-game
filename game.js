@@ -6,9 +6,11 @@ class Game {
         this.score = 0;
         this.lives = 3;
         this.starting = 0;
+        this.sound;
     }
 
     preloadGame() {
+      this.startScreen = loadImage("../images/sky_1.png")
       this.backgroundImg = loadImage("../images/sky.png")
       this.playerImg = loadImage("../images/unicorn.png");
       this.cloudImg = loadImage("../images/good-cloud.png");
@@ -19,6 +21,8 @@ class Game {
         { src: loadImage("../images/cupcake3.png"),},
         { src: loadImage("../images/cupcake4.png"),},
     ];
+    soundFormats('mp3');
+    this.sound = loadSound('./sound/bubble.mp3');
     }
 
     setupGame() {
@@ -41,18 +45,26 @@ class Game {
     drawGame() {
       clear();
       this.background.drawBackground();
-      this.player.drawPlayer();
+      this.clouds.forEach((cloud) => {
+        cloud.drawCloud();
+        if (this.player.collision(cloud)) {
+          return false;
+        } else {
+          return true;
+        }
+      });
+
+      
       this.cloud.drawCloud();
       this.cake.drawCake();
       this.obstacle.drawObstacle();
+      this.player.drawPlayer();
     
-      if (gameStart === false) {
-        push();
-        textSize(40);
-        textAlign(CENTER);
-        text("Hey there!\n\nPress SPACE to start", 450, 210);
-        pop();
-      }
+      // if (gameStart === false) {
+      //   push();
+      //   image(this.startScreen, 0, 0);
+      //   pop();
+      // }
 
       if (this.lives === 0) {
         push();
@@ -86,16 +98,6 @@ class Game {
         this.clouds.push(new Cloud(this.cloudImg));
       }
   
-      this.clouds.forEach((cloud) => {
-        cloud.drawCloud();
-        if (this.player.collision(cloud)) {
-          return false;
-        } else {
-          return true;
-        }
-      });
-
-
       if (frameCount % 130 === 0) {
         this.cakes.push(new Cake(this.cakesImg[this.getRandomCake()].src));
       }
@@ -107,6 +109,7 @@ class Game {
   
       this.cakes = this.cakes.filter((cake) => {
         if (cake.collision(this.player)) {
+          this.sound.play();
           this.score ++;
             return false;
           } else {
@@ -129,7 +132,13 @@ class Game {
       } else {
         return true;
       }
+
     })
+    if (gameStart === false) {
+      push();
+      image(this.startScreen, 0, 0);
+      pop();
+    }
   }
 }
 
