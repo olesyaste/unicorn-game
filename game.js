@@ -4,10 +4,8 @@ class Game {
         this.cakes = [];
         this.obstacles = [];
         this.score = 0;
-        this.level = 1;
         this.lives = 3;
-        this.shadesCount = 0;
-
+        this.starting = 0;
     }
 
     preloadGame() {
@@ -46,9 +44,43 @@ class Game {
       this.player.drawPlayer();
       this.cloud.drawCloud();
       this.cake.drawCake();
-      this.obstacle.drawObstacle;
+      this.obstacle.drawObstacle();
     
+      if (gameStart === false) {
+        push();
+        textSize(40);
+        textAlign(CENTER);
+        text("Hey there!\n\nPress SPACE to start", 450, 210);
+        pop();
+      }
 
+      if (this.lives === 0) {
+        push();
+        textSize(80);
+        textAlign(CENTER);
+        text(`GAME OVER`, 450, 350);
+        textSize(40);
+        text("Press ENTER to restart", 450, 450);
+        gameOver = true;
+        song.stop();
+        noLoop();
+        pop();
+      }
+
+      if (this.score === 20){
+        push();
+        textSize(80);
+        textAlign(CENTER);
+        text(`CONGRATS!`, 450, 250);
+        text(`🎉🎉🎉`, 450, 330);
+        text(`YOU WON!!`, 450, 410);
+        textSize(40);
+        text("Press ENTER to restart", 450, 500);
+        gameOver = true;
+        song.stop();
+        noLoop();
+        pop();
+      }
 
       if (frameCount % 70 === 0) {
         this.clouds.push(new Cloud(this.cloudImg));
@@ -63,6 +95,7 @@ class Game {
         }
       });
 
+
       if (frameCount % 130 === 0) {
         this.cakes.push(new Cake(this.cakesImg[this.getRandomCake()].src));
       }
@@ -70,9 +103,11 @@ class Game {
       this.cakes.forEach((cake) => {
         cake.drawCake(this.score);
       });
+      
   
       this.cakes = this.cakes.filter((cake) => {
         if (cake.collision(this.player)) {
+          this.score ++;
             return false;
           } else {
             return true;
@@ -86,5 +121,15 @@ class Game {
       this.obstacles.forEach((obstacle) => {
         obstacle.drawObstacle();
       });
-    }
+     
+    this.obstacles = this.obstacles.filter((obstacle) => {
+      if (this.player.collision(obstacle)) {
+        this.lives --;
+        return false;
+      } else {
+        return true;
+      }
+    })
   }
+}
+

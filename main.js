@@ -1,22 +1,19 @@
 const game = new Game();
 let song;
+let gameStart = false;
+let paused = false;
+let gameOver = false;
 
 function preload() {
   game.preloadGame();
   soundFormats('mp3');
   song = loadSound('./sound/unicorn.mp3');
-  console.log(song)
 }
 
 function setup() {
-  createCanvas(800, 700);
+  createCanvas(900, 800);
   game.setupGame();
-  //song.play()
 }
-
-let score = 700
-
-
 
 function draw() {
   game.drawGame();
@@ -24,6 +21,24 @@ function draw() {
 }
 
 function keyPressed() {
+  if (gameStart === false && keyCode === 32) {
+    gameStart = true;
+    song.play();
+  }
+
+  if (gameStart === true && frameCount > 9780 && !song.isPlaying()) {
+    song.play();
+  }
+
+  if (gameOver === true && gameStart === false && keyCode === 13){
+    gameStart = true;
+    song.play();
+  }
+
+  if (keyCode === 13) {
+    document.location.reload();
+  }
+
   if (keyCode === 32) {
      game.player.jump();
   }
@@ -36,8 +51,6 @@ function keyPressed() {
     game.player.x -= 40;
   }
 
+
 }
 
-function mousePressed() {
-  song.play();
-}
