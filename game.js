@@ -15,7 +15,7 @@ class Game {
       this.playerImg = loadImage("images/unicorn.png");
       this.cloudImg = loadImage("images/good-cloud.png");
       this.obstacleImg = loadImage("images/bad-cloud.png");
-      this.startScreen = loadImage("images/start2.png");
+      this.startScreen = loadImage("images/start.png");
       this.wonScreen = loadImage("images/won.png");
       this.lostScreen = loadImage("images/lost.png");
       this.cakesImg = [ 
