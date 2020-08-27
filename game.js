@@ -15,7 +15,7 @@ class Game {
       this.playerImg = loadImage("images/unicorn.png");
       this.cloudImg = loadImage("images/good-cloud.png");
       this.obstacleImg = loadImage("images/bad-cloud.png");
-      this.startScreen = loadImage("images/start.png");
+      this.startScreen = loadImage("images/start2.png");
       this.wonScreen = loadImage("images/won.png");
       this.lostScreen = loadImage("images/lost.png");
       this.cakesImg = [ 
@@ -105,7 +105,7 @@ class Game {
 
     })
 
-    if (this.score === 2){
+    if (this.score === 20){
       push();
       image(this.wonScreen, 0, 0);
       gameOver = true;
@@ -114,7 +114,7 @@ class Game {
       pop();
     }
 
-    if (this.lives === 2) {
+    if (this.lives === 0) {
       push();
       image(this.lostScreen, 0, 0);
       gameOver = true;
