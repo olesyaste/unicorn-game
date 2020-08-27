@@ -138,7 +138,7 @@ class Game {
     })
     if (gameStart === false) {
       push();
-      image(this.startScreen, 0, 0);
+      //image(this.startScreen, 0, 0);
       pop();
     }
   }
