@@ -13,7 +13,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(900, 800);
+  createCanvas(850, 750);
   game.setupGame();
 }
 

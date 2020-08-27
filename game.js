@@ -12,11 +12,12 @@ class Game {
     preloadGame() {
       console.log("new version!!!")
       this.backgroundImg = loadImage("images/sky.png")
-
       this.playerImg = loadImage("images/unicorn.png");
       this.cloudImg = loadImage("images/good-cloud.png");
       this.obstacleImg = loadImage("images/bad-cloud.png");
-      this.startScreen = loadImage("images/sky_1.png")
+      this.startScreen = loadImage("images/start.png");
+      this.wonScreen = loadImage("images/won.png");
+      this.lostScreen = loadImage("images/lost.png");
       this.cakesImg = [ 
         { src: loadImage("images/cupcake1.png"),},
         { src: loadImage("images/cupcake2.png"),}, 
@@ -62,39 +63,6 @@ class Game {
       this.obstacle.drawObstacle();
       this.player.drawPlayer();
     
-      // if (gameStart === false) {
-      //   push();
-      //   image(this.startScreen, 0, 0);
-      //   pop();
-      // }
-
-      if (this.lives === 0) {
-        push();
-        textSize(80);
-        textAlign(CENTER);
-        text(`GAME OVER`, 450, 350);
-        textSize(40);
-        text("Press ENTER to restart", 450, 450);
-        gameOver = true;
-        song.stop();
-        noLoop();
-        pop();
-      }
-
-      if (this.score === 20){
-        push();
-        textSize(80);
-        textAlign(CENTER);
-        text(`CONGRATS!`, 450, 250);
-        text(`🎉🎉🎉`, 450, 330);
-        text(`YOU WON!!`, 450, 410);
-        textSize(40);
-        text("Press ENTER to restart", 450, 500);
-        gameOver = true;
-        song.stop();
-        noLoop();
-        pop();
-      }
 
       if (frameCount % 70 === 0) {
         this.clouds.push(new Cloud(this.cloudImg));
@@ -136,6 +104,25 @@ class Game {
       }
 
     })
+
+    if (this.score === 2){
+      push();
+      image(this.wonScreen, 0, 0);
+      gameOver = true;
+      song.stop();
+      noLoop();
+      pop();
+    }
+
+    if (this.lives === 2) {
+      push();
+      image(this.lostScreen, 0, 0);
+      gameOver = true;
+      song.stop();
+      noLoop();
+      pop();
+    }
+
     if (gameStart === false) {
       push();
       image(this.startScreen, 0, 0);
