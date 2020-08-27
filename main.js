@@ -6,6 +6,7 @@ let gameOver = false;
 
 function preload() {
   console.log("happening?")
+  console.log("please work?")
   game.preloadGame();
   soundFormats('mp3');
   song = loadSound('sound/unicorn.mp3');
