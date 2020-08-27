@@ -19,7 +19,6 @@ function setup() {
 
 function draw() {
   game.drawGame();
-  
 }
 
 function keyPressed() {
@@ -52,7 +51,4 @@ function keyPressed() {
   if (keyCode === 37) {
     game.player.x -= 40;
   }
-
-
 }
-
