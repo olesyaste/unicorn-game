@@ -7,7 +7,7 @@ let gameOver = false;
 function preload() {
   game.preloadGame();
   soundFormats('mp3');
-  song = loadSound('./sound/unicorn.mp3');
+  song = loadSound('sound/unicorn.mp3');
 }
 
 function setup() {

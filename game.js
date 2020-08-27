@@ -10,7 +10,7 @@ class Game {
     }
 
     preloadGame() {
-      this.startScreen = loadImage("/images/sky_1.png")
+      this.startScreen = loadImage("images/sky_1.png")
       this.backgroundImg = loadImage("images/sky.png")
       this.playerImg = loadImage("images/unicorn.png");
       this.cloudImg = loadImage("images/good-cloud.png");
