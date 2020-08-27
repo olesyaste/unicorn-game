@@ -16,13 +16,13 @@ class Game {
       this.cloudImg = loadImage("/images/good-cloud.png");
       this.obstacleImg = loadImage("/images/bad-cloud.png");
       this.cakesImg = [ 
-        { src: loadImage("/images/cupcake1.png"),},
-        { src: loadImage("/images/cupcake2.png"),}, 
-        { src: loadImage("/images/cupcake3.png"),},
-        { src: loadImage("/images/cupcake4.png"),},
+        { src: loadImage("images/cupcake1.png"),},
+        { src: loadImage("images/cupcake2.png"),}, 
+        { src: loadImage("images/cupcake3.png"),},
+        { src: loadImage("images/cupcake4.png"),},
     ];
     soundFormats('mp3');
-    this.sound = loadSound('/sound/bubble.mp3');
+    this.sound = loadSound('sound/bubble.mp3');
     }
 
     setupGame() {
