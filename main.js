@@ -5,6 +5,7 @@ let paused = false;
 let gameOver = false;
 
 function preload() {
+  console.log("happening?")
   game.preloadGame();
   soundFormats('mp3');
   song = loadSound('sound/unicorn.mp3');

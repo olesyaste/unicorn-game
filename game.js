@@ -12,7 +12,7 @@ class Game {
     preloadGame() {
       console.log("new version!!!")
       this.backgroundImg = loadImage("images/sky.png")
-    //  this.startScreen = loadImage("images/sky_1.png")
+     this.startScreen = loadImage("images/sky_1.png")
 
       this.playerImg = loadImage("images/unicorn.png");
       this.cloudImg = loadImage("images/good-cloud.png");
@@ -138,7 +138,7 @@ class Game {
     })
     if (gameStart === false) {
       push();
-      //image(this.startScreen, 0, 0);
+      image(this.startScreen, 0, 0);
       pop();
     }
   }
